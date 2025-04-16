@@ -15,15 +15,21 @@ void printMyBio(char name[], int age) {
     printf("=====================================\n");
 }
 
-void myFunction(int myNumbers[5]) {
-    for (int i = 0; i < 5; i++) {
-        printf("%d\n", myNumbers[i]);
-    }
-}
+void myFunction(int myNumbers[5]); 
+int myFunctions(int x);
 
-int myFunctions(int x) {
-    return 5 + x;
-}
+enum Level {
+    LOW,    //0
+    MEDIUM, //1
+    HIGH    //2
+  };
+
+struct myStructure {
+    int myNum;
+    char myLetter;
+    enum Level level;
+};
+
 
 int main() {
     int myAge = 24;
@@ -53,7 +59,30 @@ int main() {
 
     myFunction(myNumbers);
 
-    printf("Result is: %d", myFunctions(3));
+    printf("Result is: %d\n", myFunctions(3));
+
+    struct myStructure s1;
+    s1.myNum = 13;
+    s1.myLetter = 'A';
+    s1.level = HIGH;
+    printf("My number: %d\n", s1.myNum);
+    printf("My letter: %c\n", s1.myLetter);
+    printf("My Enum: %d\n", s1.level);
+
+
+    struct myStructure s2 = {10, 'B', MEDIUM};
 
     return 0;
+}
+
+
+void myFunction(int myNumbers[5]) {
+    for (int i = 0; i < 5; i++) {
+        printf("%d\n", myNumbers[i]);
+    }
+}
+
+
+int myFunctions(int x) {
+    return 5 + x;
 }
