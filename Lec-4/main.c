@@ -1,6 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void myFunction() {
+    int *ptr;
+    ptr = malloc(sizeof(*ptr));
+}
+
 int main() {
     int myInt;
     float myFloat;
@@ -37,4 +42,27 @@ int main() {
     }
     free(students);
 
+
+    int *ptr1, *ptr2, size;
+
+    // Allocate memory for four integers
+    size = 4 * sizeof(*ptr1); // 16
+    ptr1 = malloc(size);
+  
+    printf("%d bytes allocated at address %p \n", size, ptr1);
+  
+    // Resize the memory to hold six integers
+    size = 6 * sizeof(*ptr1); // 24
+    ptr2 = realloc(ptr1, size);
+  
+    printf("%d bytes reallocated at address %p \n", size, ptr2);
+    printf("%d bytes allocated at address %p \n", size, ptr1);
+
+    free(ptr1);
+    ptr1 = NULL;
+
+    int x = 5;
+    int *ptr;
+    ptr = calloc(2, sizeof(*ptr));
+    ptr = &x;
 }
